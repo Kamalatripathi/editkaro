@@ -3,15 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional video editing services by Editkaro.in - Transform your content with stunning visuals">
+    <meta name="theme-color" content="#0d0d1a">
     <title>Editkaro.in | Portfolio</title>
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//storage.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    
+    <!-- Critical CSS for faster initial load -->
+    <style>
+        /* Critical styles for above-the-fold content */
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background-color: #0d0d1a; 
+            color: #e0e0e0; 
+            margin: 0; 
+        }
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 1.5rem 5%; 
+            background: rgba(13, 13, 26, 0.7); 
+            backdrop-filter: blur(10px); 
+        }
+    </style>
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div id="preloader"></div>
 
     <header>
         <div class="logo">
@@ -141,8 +172,8 @@
 
         <section id="portfolio-grid" class="portfolio-grid">
             <div class="portfolio-item" data-category="short-form ecommerce">
-                <img src="ecom.png" alt="Ecommerce Ad">
-                <video src="https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" preload="none" muted loop></video>
+                <img src="ecom.png" alt="Ecommerce Ad" loading="lazy">
+                <video src="https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" preload="none" muted loop loading="lazy"></video>
                 <div class="video-info">
                     <h4>E-commerce Ad</h4>
                     <p>Dynamic product showcase for a fashion brand.</p>
@@ -150,8 +181,8 @@
             </div>
 
             <div class="portfolio-item" data-category="gaming short-form">
-                <img src="gaming.png" alt="Gaming Montage">
-                <video src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" preload="none" muted loop></video>
+                <img src="gaming.png" alt="Gaming Montage" loading="lazy">
+                <video src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" preload="none" muted loop loading="lazy"></video>
                 <div class="video-info">
                     <h4>Gaming Montage</h4>
                     <p>Fast-paced montage with sound design.</p>
@@ -159,8 +190,8 @@
             </div>
 
             <div class="portfolio-item" data-category="long-form documentary">
-                <img src="docum.png" alt="Documentary Piece">
-                <video src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" preload="none" muted loop></video>
+                <img src="docum.png" alt="Documentary Piece" loading="lazy">
+                <video src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" preload="none" muted loop loading="lazy"></video>
                 <div class="video-info">
                     <h4>Documentary Piece</h4>
                     <p>An in-depth look into a local community initiative.</p>
@@ -168,8 +199,8 @@
             </div>
             
             <div class="portfolio-item" data-category="football color-grading">
-                <img src="football.png" alt="Football Edit">
-                <video src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" preload="none" muted loop></video>
+                <img src="football.png" alt="Football Edit" loading="lazy">
+                <video src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" preload="none" muted loop loading="lazy"></video>
                 <div class="video-info">
                     <h4>Football Highlight Edit</h4>
                     <p>Dynamic highlights with professional color grading.</p>
@@ -177,8 +208,8 @@
             </div>
 
             <div class="portfolio-item" data-category="anime short-form">
-                <img src="anime.png" alt="Anime Music Video">
-                <video src="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" preload="none" muted loop></video>
+                <img src="anime.png" alt="Anime Music Video" loading="lazy">
+                <video src="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" preload="none" muted loop loading="lazy"></video>
                 <div class="video-info">
                     <h4>Anime Music Video</h4>
                     <p>Creative edit with motion graphics.</p>
