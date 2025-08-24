@@ -20,14 +20,13 @@ body {
     color: var(--primary-color);
     line-height: 1.6;
 
-    /* Add the background image here */
-    background-image: url('back3.png');
-    background-size: cover; /* This makes the image cover the entire background */
-    background-attachment: fixed; /* This makes the image stay in place when scrolling */
-    background-position: center; /* This centers the image */
-    background-repeat: no-repeat; /* This prevents the image from repeating */
-    
+    /* Optimized background image loading */
     background-color: var(--bg-color); /* This acts as a fallback color */
+    background-image: url('back3.png');
+    background-size: cover;
+    background-attachment: scroll; /* Changed from fixed for better performance */
+    background-position: center;
+    background-repeat: no-repeat;
 }
 html {
     scroll-behavior: smooth;
@@ -185,8 +184,8 @@ header nav a:hover::after {
     width: 200%;
     height: 200%;
     background: conic-gradient(from 0deg, transparent, var(--accent-color-1), transparent);
-    animation: rotate 20s linear infinite;
-    opacity: 0.1;
+    animation: rotate 60s linear infinite; /* Slower animation */
+    opacity: 0.05; /* Reduced opacity */
 }
 
 .about-section::after {
@@ -198,8 +197,8 @@ header nav a:hover::after {
     height: 300px;
     background: radial-gradient(circle, var(--accent-color-2) 0%, transparent 70%);
     border-radius: 50%;
-    opacity: 0.1;
-    animation: pulse 4s ease-in-out infinite;
+    opacity: 0.05; /* Reduced opacity */
+    animation: pulse 8s ease-in-out infinite; /* Slower animation */
 }
 
 .about-content {
@@ -285,7 +284,7 @@ header nav a:hover::after {
     height: 60px;
     background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2));
     border-radius: 50%;
-    animation: float 6s ease-in-out infinite;
+    animation: float 12s ease-in-out infinite; /* Slower animation */
 }
 
 .floating-element:nth-child(1) {
@@ -297,19 +296,19 @@ header nav a:hover::after {
 .floating-element:nth-child(2) {
     top: 20%;
     right: 10%;
-    animation-delay: 2s;
+    animation-delay: 3s; /* Staggered timing */
 }
 
 .floating-element:nth-child(3) {
     bottom: 30%;
     left: 10%;
-    animation-delay: 4s;
+    animation-delay: 6s; /* Staggered timing */
 }
 
 .floating-element:nth-child(4) {
     bottom: 10%;
     right: 20%;
-    animation-delay: 1s;
+    animation-delay: 9s; /* Staggered timing */
 }
 
 .center-logo {
@@ -320,7 +319,7 @@ header nav a:hover::after {
     font-size: 4rem;
     color: var(--accent-color-2);
     text-shadow: 0 0 30px var(--accent-color-2);
-    animation: pulse 3s ease-in-out infinite;
+    animation: pulse 6s ease-in-out infinite; /* Slower animation */
 }
 
 @keyframes rotate {
@@ -353,8 +352,8 @@ header nav a:hover::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%2300f2ff" opacity="0.1"><animate attributeName="r" values="1;3;1" dur="4s" repeatCount="indefinite"/></circle></svg>') repeat;
-    animation: twinkle 8s linear infinite;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%2300f2ff" opacity="0.05"><animate attributeName="r" values="1;2;1" dur="8s" repeatCount="indefinite"/></circle></svg>') repeat;
+    animation: twinkle 16s linear infinite; /* Slower animation */
 }
 
 .testimonials-container {
@@ -656,35 +655,303 @@ header nav a:hover::after {
     transform: scale(1.1) rotate(90deg);
 }
 
-/* Preloader */
+/* Enhanced Preloader */
 #preloader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--bg-color);
+    background: linear-gradient(135deg, var(--bg-color) 0%, var(--secondary-color) 100%);
     z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow: hidden;
+    cursor: pointer;
 }
 
-#preloader::after {
-    content: '';
-    width: 50px;
-    height: 50px;
-    border: 5px solid var(--accent-color-1);
-    border-top-color: transparent;
+#preloader.fade-out,
+#preloader[style*="opacity: 0"] {
+    opacity: 0 !important;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.preloader-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-container {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.preloader-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    animation: logoGlow 2s ease-in-out infinite alternate;
+}
+
+.logo-underline {
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color-1), var(--accent-color-2));
+    margin: 1rem auto;
+    border-radius: 2px;
+    animation: underlineExpand 0.6s ease-out forwards; /* Much faster animation */
+}
+
+.simple-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 242, 255, 0.3);
+    border-top: 3px solid var(--accent-color-1);
     border-radius: 50%;
     animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+.loading-animation {
+    position: relative;
+}
+
+.spinner-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 2rem;
+}
+
+.spinner {
+    width: 80px;
+    height: 80px;
+    border: 4px solid rgba(0, 242, 255, 0.2);
+    border-top: 4px solid var(--accent-color-1);
+    border-radius: 50%;
+    animation: spin 1s linear infinite; /* Faster spin */
+    position: relative;
+}
+
+.spinner-glow {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 80px;
+    height: 80px;
+    border: 4px solid transparent;
+    border-top: 4px solid var(--accent-color-2);
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite reverse; /* Faster spin */
+    filter: blur(2px);
+}
+
+.loading-bars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 2rem 0;
+}
+
+.bar {
+    width: 6px;
+    height: 40px;
+    background: linear-gradient(to top, var(--accent-color-1), var(--accent-color-2));
+    border-radius: 3px;
+    animation: barPulse 1s ease-in-out infinite; /* Faster animation */
+}
+
+.bar:nth-child(1) { animation-delay: 0s; }
+.bar:nth-child(2) { animation-delay: 0.2s; }
+.bar:nth-child(3) { animation-delay: 0.4s; }
+.bar:nth-child(4) { animation-delay: 0.6s; }
+.bar:nth-child(5) { animation-delay: 0.8s; }
+
+.loading-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin: 1rem 0;
+    opacity: 0.8;
+}
+
+.progress-bar {
+    width: 300px;
+    height: 4px;
+    background: rgba(0, 242, 255, 0.2);
+    border-radius: 2px;
+    margin: 1rem auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-color-1), var(--accent-color-2));
+    border-radius: 2px;
+    transition: width 0.1s ease; /* Use transition instead of animation for instant control */
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s ease-in-out infinite;
+}
+
+.progress-percent {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    color: var(--accent-color-1);
+    font-weight: 500;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.floating-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color-1);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+.particle:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 6s;
+}
+
+.particle:nth-child(2) {
+    top: 50%;
+    left: 20%;
+    animation-delay: 1s;
+    animation-duration: 8s;
+}
+
+.particle:nth-child(3) {
+    top: 30%;
+    right: 15%;
+    animation-delay: 2s;
+    animation-duration: 7s;
+}
+
+.particle:nth-child(4) {
+    bottom: 30%;
+    left: 25%;
+    animation-delay: 3s;
+    animation-duration: 6s;
+}
+
+.particle:nth-child(5) {
+    bottom: 20%;
+    right: 20%;
+    animation-delay: 4s;
+    animation-duration: 9s;
+}
+
+.particle:nth-child(6) {
+    top: 60%;
+    right: 30%;
+    animation-delay: 5s;
+    animation-duration: 7s;
+}
+
+/* Preloader Animations */
+@keyframes logoGlow {
+    0% { 
+        filter: drop-shadow(0 0 10px var(--accent-color-1));
+        transform: scale(1);
+    }
+    100% { 
+        filter: drop-shadow(0 0 20px var(--accent-color-2));
+        transform: scale(1.02);
+    }
+}
+
+@keyframes underlineExpand {
+    0% { width: 0; }
+    100% { width: 200px; }
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes barPulse {
+    0%, 100% { 
+        transform: scaleY(0.4);
+        opacity: 0.6;
+    }
+    50% { 
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+@keyframes textFade {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+@keyframes progressFill {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0.6;
+    }
+    25% { 
+        transform: translateY(-20px) translateX(10px) scale(1.1);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translateY(-10px) translateX(-5px) scale(0.9);
+        opacity: 1;
+    }
+    75% { 
+        transform: translateY(-15px) translateX(15px) scale(1.05);
+        opacity: 0.7;
+    }
 }
 
 /* Footer */
@@ -903,5 +1170,37 @@ footer {
 
     .contact-form h2 {
         font-size: 2rem;
+    }
+    
+    /* Preloader Mobile Optimizations */
+    .preloader-logo {
+        font-size: 2.5rem;
+    }
+    
+    .logo-underline {
+        width: 150px;
+    }
+    
+    .spinner-container {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .spinner, .spinner-glow {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .progress-bar {
+        width: 250px;
+    }
+    
+    .loading-bars {
+        gap: 6px;
+    }
+    
+    .bar {
+        width: 4px;
+        height: 30px;
     }
 }
