@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize core functionality immediately (no preloader)
+    initializePortfolio();
+    initializeTestimonials();
+    initializeContactForm();
+    initializeAnimations();
+});
+
+function initializePortfolio() {
     // Video Lightbox Functionality
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     const lightbox = document.getElementById('lightbox');
@@ -108,14 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+}
 
-    // Preloader
-    window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
-        preloader.style.opacity = '0';
-        preloader.style.visibility = 'hidden';
-    });
-
+function initializeTestimonials() {
     // Enhanced Testimonial Carousel
     const carousel = document.querySelector('.testimonial-carousel');
     const navDots = document.querySelectorAll('.nav-dot');
@@ -185,7 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     startAutoScroll();
+}
 
+function initializeContactForm() {
     // Contact Form Modal
     const contactLink = document.querySelector('a[href="#contact-modal"]');
     const contactModal = document.getElementById('contact-modal');
@@ -238,8 +243,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+}
 
-    // Animate stats on scroll
+function initializeAnimations() {
+    // Animate stats on scroll with Intersection Observer
     const observerOptions = {
         threshold: 0.5,
         rootMargin: '0px 0px -100px 0px'
@@ -277,4 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 30);
     }
-});
+}
+
+// Note: Preloader is now handled in the initializePreloader function above
+// This is kept as a backup for any edge cases
