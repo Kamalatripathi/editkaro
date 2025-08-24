@@ -20,16 +20,34 @@ body {
     color: var(--primary-color);
     line-height: 1.6;
 
-    /* Optimized background image loading */
+    /* Enhanced background image loading with multiple fallbacks */
     background-color: var(--bg-color); /* This acts as a fallback color */
+    background-image: url('./back3.png'), url('back3.png');
+    background-size: cover;
+    background-attachment: fixed; /* Changed back to fixed for better visual effect */
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+/* Alternative background rule for better compatibility */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('back3.png');
     background-size: cover;
-    background-attachment: scroll; /* Changed from fixed for better performance */
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0.8;
 }
 html {
     scroll-behavior: smooth;
+    height: 100%;
 }
 
 /* Screen reader only class for accessibility */
@@ -43,6 +61,13 @@ html {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+/* Ensure background is visible */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 /* Header */
